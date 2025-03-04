@@ -1,6 +1,6 @@
 
 # CC-Drone
-This project allows you to control Tello drones using hand gestures. It leverages Google's MediaPipe for hand tracking and OpenCV for real-time video streaming from the camera.
+This project allows you to control Tello drones using hand gestures. OpenCV captures the image from the camera, which is then transmitted to MediaPipe. MediaPipe processes the image and returns a marked image with points indicating the hand. MediaPipe marks the hand with points, four per finger and one for the base of the hand. Each point has its own coordinates in 3D space (xyz). The program then uses these coordinates to perform checks and determine certain commands based on the gestures shown by the user.
 
 ---
 ## Installation
