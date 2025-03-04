@@ -1,33 +1,31 @@
+
 # CC-Drone
-This repository is about a project that enables controlling Tello drones through hand gestures. It uses Google's MediaPipe for hand tracking and OpenCV for real-time video streaming from the camera.
+This project allows you to control Tello drones using hand gestures. It leverages Google's MediaPipe for hand tracking and OpenCV for real-time video streaming from the camera.
 
 ---
-## Installation:
+## Installation
 
 ### 1. Install Python  
-Make sure you have the latest version of Python installed. If it's not installed, download it from the official website: [Python Downloads](https://www.python.org/downloads/).  
-During installation, check the **"Add Python to PATH"** option to be able to use Python from the command line.
+Ensure you have the latest version of Python installed. If not, download it from the official website: [Python Downloads](https://www.python.org/downloads/).  
+> *Recommendation:* During installation, check the **"Add Python to PATH"** option to make Python accessible from the command line.
 
-### 2. Download the repository from GitHub  
-Clone the repository using the command:  
+### 2. Clone the repository  
+Download the project using Git:  
 ```bash
 git clone https://github.com/ViruSs51/CC-Drone.git
 ```  
-Replace `https://github.com/ViruSs51/CC-Drone.git` with the actual repository link.
-
 If you don't have Git installed, you can manually download the repository as a `.zip` file from GitHub and extract it into a folder.
 
-### 3. Create a virtual environment  
-Navigate to the project folder in the terminal:  
+### 3. Create and activate a virtual environment  
+Navigate to the project folder:  
 ```bash
 cd CC-Drone
 ```
-Create a virtual environment using the command:  
+Create a virtual environment:  
 ```bash
 python -m venv venv
 ```
 Activate the virtual environment:  
-
 - **On Windows**:  
   ```bash
   venv\Scripts\activate
@@ -37,30 +35,66 @@ Activate the virtual environment:
   source venv/bin/activate
   ```
 
-### 4. Install required libraries  
-Install all dependencies from `requirements.txt`:  
+### 4. Install dependencies  
+Install all required libraries from `requirements.txt`:  
 ```bash
 pip install -r requirements.txt
 ```
-If you encounter `pip` errors, make sure you have the latest version by running:  
-```bash
-pip install --upgrade pip
-```
 
-### 5. Select the camera for the application  
-To check and set the camera that the application will use, run the command:  
+### 5. Verify and select the camera  
+Run the following command to check and select the camera the application will use:  
 ```bash
 python verifyCamera.py
 ```
-This script will display the available cameras. Select the desired camera index and save it according to the terminal instructions.
+This script will display available cameras. Select the desired camera index according to the instructions in the terminal.
 
 ### 6. Connect to the Tello drone and run the application  
-- Connect to the Tello drone's Wi-Fi (check the name in the drone's manual).  
-- Once connected to the drone's Wi-Fi, run the main application:  
+- Connect to the Tello drone’s Wi-Fi (check the name in the drone’s manual).  
+- Once connected, run the main application:  
   ```bash
   python main.py
   ```
-If everything is configured correctly, the application will start capturing video frames and interpreting gestures for drone control.
+
+If everything is configured correctly, the application will begin capturing video frames and interpreting gestures for drone control.
+
+**Note:** If you encounter issues, make sure all libraries are installed correctly and that you have the necessary permissions to access the camera and network.
 
 ---
-**Note:** If you encounter issues, ensure all libraries are installed correctly and that you have permissions to access the camera and network.
+## Drone Control Instructions
+
+### 1. **"Wait" Command ✋**  
+- **Gesture**: Vertical palm in front of the camera, with the thumb pressed against the palm.  
+- **Action**: The drone will remain still (no movement).
+
+### 2. **"Start" Command 👊**  
+- **Gesture**: A closed fist.  
+- **Action**: The drone will start its operation.
+
+### 3. **"Move" Command 👉**  
+- **Gesture**: Pointing with the index finger.  
+  - Move the finger to the **right** to move the drone forward. You will need to indicate the distance in centimeters for how far the drone should move.  
+  - Move the finger to the **left** to move the drone backward. Again, specify the distance in centimeters for the backward movement.
+
+### 4. **"Rotate" Command 👉✋**  
+- **Gesture**: Pointing with both the index finger and middle finger.  
+  - Move the fingers to the **right** to rotate the drone to the left.  
+  - Move the fingers to the **left** to rotate the drone to the right.  
+  - The rotation angle is indicated by the distance the fingers move in either direction.
+
+### 5. **"Stop" (Landing) Command ✋👇**  
+- **Gesture**: Open palm with the thumb pointing downward.  
+- **Action**: The drone will stop and land.
+
+## How to Control the Drone
+
+1. Ensure the drone's camera is facing your hand gestures.
+2. Use the described gestures to control the drone's movement, rotation, and landing.
+3. Make sure to follow the specific hand positioning for each gesture to ensure proper recognition and response.
+
+Feel free to experiment with these gestures to control the drone more effectively!
+
+---
+
+## License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
