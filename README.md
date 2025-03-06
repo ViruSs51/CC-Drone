@@ -49,7 +49,7 @@ Feel free to experiment with these gestures to control the drone more effectivel
 ## 📂 Repository Structure
 
 ```
-📦 tello-controller
+📦 CC-Drone
  ┣ 📂 src
  ┃ ┗ 📂 controllers
  ┃   ┣ 📜 __init__.py
@@ -62,6 +62,7 @@ Feel free to experiment with these gestures to control the drone more effectivel
  ┣ 📂 tests
  ┣ 📜 requirements.txt
  ┣ 📜 README.md
+ ┣ 📜 LICENSE
  ┣ 📜 main.py
 ```
 
