@@ -8,6 +8,6 @@ def open_json(filename: str) -> dict:
         return content
 
 
-def write_json(filename: str, content):
+def write_json(filename: str, content: dict) -> None:
     with open(filename, "w", encoding="utf-8") as file:
         file.write(json.dumps(content, indent=4))

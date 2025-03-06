@@ -1,6 +1,6 @@
 import cv2
 import os
-from utils import FileManager
+from utils import file_manager
 
 
 config_path = "data/config.json"
@@ -21,7 +21,7 @@ def get_avaible_cams() -> list[str]:
 
 
 def main():
-    config = FileManager.open_json(filename=config_path)
+    config = file_manager.open_json(filename=config_path)
 
     cams = get_avaible_cams()
     os.system("cls")
@@ -35,7 +35,7 @@ def main():
                 config["camera"] = (
                     int(camera_index) if camera_index != "drone" else camera_index
                 )
-                FileManager.write_json(filename=config_path, content=config)
+                file_manager.write_json(filename=config_path, content=config)
 
                 print("\nThe camera has been set up successfully!\n")
                 break

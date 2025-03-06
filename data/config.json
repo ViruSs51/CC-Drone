@@ -1,3 +1,4 @@
 {
-    "camera": 0
+    "camera": 0,
+    "connect_drone": false
 }

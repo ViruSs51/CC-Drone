@@ -1,26 +1,35 @@
 from djitellopy import Tello
 import keyboard
+import numpy as np
 
 
 class Controller:
     capture = None
 
     def __init__(self):
-        """"""
+        """Interface for controlling the drone via the djitellopy module"""
         self.drone = Tello()
         self.drone.connect()
 
-        print(f"Battery: {self.drone.get_battery()}")
+    def get_battery(self) -> int:
+        """:return: The percentage of how charged the battery is currently between 0-100"""
+        return self.drone.get_battery()
 
     def run_camera(self):
+        """Starts streaming from the drone's front camera and saves the video stream from the camera to **self.capture**"""
         self.drone.streamon()
         self.capture = self.drone.get_frame_read()
 
-    def get_capture(self):
+    def get_capture(self) -> np.ndarray | None:
+        """Too frame with image from video stream (**self.capture**)"""
         if self.capture:
             return self.capture.frame
 
         return None
+
+    def get_height(self):
+        """:return: Current height in cm"""
+        return self.drone.get_height()
 
     def run(self):
         """Running drone"""
@@ -36,8 +45,8 @@ class Controller:
         :param d: the distance it will travel
         """
 
-        if d < 50:
-            d = 50
+        if d < 40:
+            d = 40
 
         match direction:
             case "left":
@@ -75,6 +84,18 @@ class Controller:
         return press
 
     def qwerty_control_run(self):
+        """Allows control of the drone via the keyboard.
+
+        :esc: Landing drone and exiting the method
+        :shift: Move up 10 cm
+        :ctrl: Move down 10 cm
+        :w: Move forward 50 cm
+        :a: Move left 50 cm
+        :s: Move back 50 cm
+        :d: Move right 50 cm
+        :q: Rotate left 10 degrees
+        :e: Rotate right 10 degrees
+        """
         run = True
         self.run()
 

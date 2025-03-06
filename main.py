@@ -1,13 +1,14 @@
 import cv2
-import DroneController as dc
-from CameraControllerTello import CameraController
-from utils import FileManager
+import numpy as np
+from utils import file_manager
+from src.controllers import Controller
+from src.controllers import CameraController
 
 
 config_path = "data/config.json"
 
 
-def get_frame(capture: cv2.VideoCapture):
+def get_frame(capture: cv2.VideoCapture) -> np.ndarray:
     """This function is specifically customized for capturing the camera frame"""
     ret, frame = capture.read()
 
@@ -18,19 +19,27 @@ def get_frame(capture: cv2.VideoCapture):
 
 
 def main():
-    config = FileManager.open_json(config_path)
-    controller = dc.Controller()
+    config = file_manager.open_json(config_path)
+    controller = Controller() if config["connect_drone"] else None
 
-    if config["camera"] == "drone":
+    # If the controller is not exist, the image from the simple camera will be captured, and the controller with the camera will be started without sending any commands to the drone.
+    if controller is not None and config["camera"] == "drone":
         controller.run_camera()
         camera_controller = CameraController(
-            drone_controller=controller, get_frame_function=controller.get_capture
+            get_frame_function=controller.get_capture, 
+            drone_controller=controller,
+            show_information=True,
+            show_landmarks=True,
         )
 
-    else:
+    elif config["camera"] != "drone" and type(config["camera"]) is int:
         capture = cv2.VideoCapture(config["camera"])
         camera_controller = CameraController(
-            drone_controller=controller, get_frame_function=get_frame, capture=capture
+            get_frame_function=get_frame, 
+            drone_controller=controller, 
+            show_information=True,
+            show_landmarks=True,
+            capture=capture
         )
 
     camera_controller.running()

@@ -24,7 +24,9 @@ class Hand:
     INDEX_FINGER_TIP: dict[str, list | tuple | dict]  # Vârful degetului arătător
 
     # Degetul mijlociu (Middle Finger)
-    MIDDLE_FINGER_MCP: dict[str, list | tuple | dict]  # Articulația metacarpo-falangiană
+    MIDDLE_FINGER_MCP: dict[
+        str, list | tuple | dict
+    ]  # Articulația metacarpo-falangiană
     MIDDLE_FINGER_PIP: dict[str, list | tuple | dict]  # Articulația proximală
     MIDDLE_FINGER_DIP: dict[str, list | tuple | dict]  # Articulația distală
     MIDDLE_FINGER_TIP: dict[str, list | tuple | dict]  # Vârful degetului mijlociu
