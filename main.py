@@ -26,7 +26,7 @@ def main():
     if controller is not None and config["camera"] == "drone":
         controller.run_camera()
         camera_controller = CameraController(
-            get_frame_function=controller.get_capture, 
+            get_frame_function=controller.get_capture,
             drone_controller=controller,
             show_information=True,
             show_landmarks=True,
@@ -35,11 +35,11 @@ def main():
     elif config["camera"] != "drone" and type(config["camera"]) is int:
         capture = cv2.VideoCapture(config["camera"])
         camera_controller = CameraController(
-            get_frame_function=get_frame, 
-            drone_controller=controller, 
+            get_frame_function=get_frame,
+            drone_controller=controller,
             show_information=True,
             show_landmarks=True,
-            capture=capture
+            capture=capture,
         )
 
     camera_controller.running()
