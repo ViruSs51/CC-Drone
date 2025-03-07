@@ -54,7 +54,7 @@ Feel free to experiment with these gestures to control the drone more effectivel
  ┃ ┗ 📂 controllers
  ┃   ┣ 📜 __init__.py
  ┃   ┣ 📜 camera_controller.py
- ┃   ┣ 📜 drone_dontroller.py
+ ┃   ┗ 📜 drone_dontroller.py
  ┃ 
  ┣ 📂 utils
  ┃ ┣ 📜 __init__.py
@@ -63,7 +63,7 @@ Feel free to experiment with these gestures to control the drone more effectivel
  ┣ 📜 requirements.txt
  ┣ 📜 README.md
  ┣ 📜 LICENSE
- ┣ 📜 main.py
+ ┗ 📜 main.py
 ```
 
 ---
