@@ -199,7 +199,7 @@ class CameraController:
           - The rotation angle is indicated by the distance the fingers move in either direction.
         - **Action**: The rotation command is added to the queue.
 
-        ### 5. **"Stop" (Landing) Command ✋👇**
+        #### 5. **"Stop" (Landing) Command ✋👇**
         - **Gesture**: Open palm with the thumb pointing downward.
         - **Action**: The drone will stop and land.
 
