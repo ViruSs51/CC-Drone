@@ -141,7 +141,7 @@ from src.controllers import CameraController
 #### 1. Creating a custom function to capture video frames
   - This method is useful for **testing functionality** without connecting to a drone.
 ```python
-def get_frame_custom_function(capture: cv2.VideoCapture) -> np.ndarray:
+def get_frame_custom_function(capture: cv2.VideoCapture) -> np.ndarray|None:
     """This function is specifically customized for capturing the camera frame"""
     ret, frame = capture.read() # Reading the frame from the video camera
 
@@ -187,7 +187,6 @@ camera_controller = CameraController(
     drone_controller=controller, # Instance of the src.controllers.drone_controller.Controller class
     show_information=True, # If you want to display information about the commands executed on the screen
     show_landmarks=True, # If you want to display hand markings on the screen
-    capture=capture # Parameter for the custom frame fetch function
 )
 ```
 
