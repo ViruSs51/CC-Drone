@@ -10,17 +10,25 @@ drone.streamon()
 # Comanda pentru a captura fluxul video de la Tello
 command = [
     "C:\\ffmpeg\\bin\\ffmpeg.exe",
-    "-probesize", "32",
-    "-analyzeduration", "0",
-    "-i", "udp://192.168.10.1:11111",
-    "-f", "image2pipe",
-    "-pix_fmt", "bgr24",
-    "-vcodec", "rawvideo",
+    "-probesize",
+    "32",
+    "-analyzeduration",
+    "0",
+    "-i",
+    "udp://192.168.10.1:11111",
+    "-f",
+    "image2pipe",
+    "-pix_fmt",
+    "bgr24",
+    "-vcodec",
+    "rawvideo",
     "-",
 ]
 
 # Pornim procesul ffmpeg
-pipe = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, bufsize=10**8)
+pipe = subprocess.Popen(
+    command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, bufsize=10**8
+)
 
 while True:
     # Citim un frame din fluxul video

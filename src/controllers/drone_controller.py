@@ -62,24 +62,24 @@ class Controller:
             case "down":
                 self.drone.move_down(d)
 
-    def move2(self, direction: str, d: int|float):
-        '''
+    def move2(self, direction: str, d: int | float):
+        """
         :param direction: it can contain left, right, forward or back
         :param d: the distance it will travel
-        '''
+        """
 
         match direction:
-            case 'left':
+            case "left":
                 self.drone.send_rc_control(d, 0, 0, 0)
-            case 'right':
+            case "right":
                 self.drone.send_rc_control(-d, 0, 0, 0)
-            case 'forward':
+            case "forward":
                 self.drone.send_rc_control(0, d, 0, 0)
-            case 'back':
+            case "back":
                 self.drone.send_rc_control(0, -d, 0, 0)
-            case 'up':
+            case "up":
                 self.drone.send_rc_control(0, 0, d, 0)
-            case 'down':
+            case "down":
                 self.drone.send_rc_control(0, 0, -d, 0)
 
     def rotate(self, direction: str, d: int | float):
@@ -94,16 +94,16 @@ class Controller:
             case "right":
                 self.drone.rotate_clockwise(d)
 
-    def rotate2(self, direction: str, d: int|float):
-        '''
+    def rotate2(self, direction: str, d: int | float):
+        """
         :param direction: it can contain left or right
         :param d: degrees of rotation
-        '''
+        """
 
         match direction:
-            case 'left':
+            case "left":
                 self.drone.send_rc_control(0, 0, 0, d)
-            case 'right':
+            case "right":
                 self.drone.send_rc_control(0, 0, 0, -d)
 
     def __keyboard_press(self, last_pressed: str, key: str) -> str:
@@ -136,29 +136,29 @@ class Controller:
                 self.stop()
                 break
 
-            elif keyboard.is_pressed('space'):
+            elif keyboard.is_pressed("space"):
                 self.run()
 
-            elif keyboard.is_pressed('a'):
-                self.move2(direction='left', d=100)
+            elif keyboard.is_pressed("a"):
+                self.move2(direction="left", d=100)
 
-            elif keyboard.is_pressed('d'):
-                self.move2(direction='right', d=100)
+            elif keyboard.is_pressed("d"):
+                self.move2(direction="right", d=100)
 
-            elif keyboard.is_pressed('w'):
-                self.move2(direction='forward', d=100)
+            elif keyboard.is_pressed("w"):
+                self.move2(direction="forward", d=100)
 
-            elif keyboard.is_pressed('s'):
-                self.move2(direction='back', d=50)
+            elif keyboard.is_pressed("s"):
+                self.move2(direction="back", d=50)
 
-            elif keyboard.is_pressed('q'):
-                self.rotate2(direction='left', d=30)
+            elif keyboard.is_pressed("q"):
+                self.rotate2(direction="left", d=30)
 
-            elif keyboard.is_pressed('e'):
-                self.rotate2(direction='right', d=30)
+            elif keyboard.is_pressed("e"):
+                self.rotate2(direction="right", d=30)
 
-            elif keyboard.is_pressed('shift'):
-                self.move2(direction='up', d=50)
+            elif keyboard.is_pressed("shift"):
+                self.move2(direction="up", d=50)
 
-            elif keyboard.is_pressed('ctrl'):
-                self.move2(direction='down', d=50)
+            elif keyboard.is_pressed("ctrl"):
+                self.move2(direction="down", d=50)

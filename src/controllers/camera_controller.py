@@ -11,7 +11,9 @@ config_path = "data/config.json"
 
 
 class CameraController:
-    __path = [] # This list contains the commands that will be executed by the drone one by one.
+    __path = (
+        []
+    )  # This list contains the commands that will be executed by the drone one by one.
     _run = False
     __start = False
     __started = False
@@ -68,7 +70,11 @@ class CameraController:
         self.__get_frame_function = get_frame_function
         self.__func_params = [args, kwargs]
         self.__drone_controller = drone_controller
-        self.show_information, self.show_minimap, self.show_landmarks = show_information, show_minimap, show_landmarks
+        self.show_information, self.show_minimap, self.show_landmarks = (
+            show_information,
+            show_minimap,
+            show_landmarks,
+        )
 
         self.__hands = Hands()
         self.config = file_manager.open_json(filename=config_path)
@@ -112,7 +118,7 @@ class CameraController:
 
     def __runPath(self):
         """Iterates through each element in **self.__path** and then executes the indicated command, finally emptying the list"""
-        if self.commandToDrone() is True:
+        if self.commandToDrone(command="fly?") is True:
             for action in self.__path:
                 if action[0] == "move":
                     if action[1] > 0:  # Move forward
@@ -128,11 +134,10 @@ class CameraController:
                     else:  # Rotate right
                         self.__drone_controller.rotate("right", abs(action[1]))
 
-        self.__minimap_path_index = 0
-        self.__minimap_path = []
+        self.minimap.clearPath()
         self.__path = []
 
-    def commandToDrone(self, command: str="") -> bool:
+    def commandToDrone(self, command: str = "") -> bool:
         """Execute special interface commands to control the drone
 
         :param command: The command you want to execute. Available commands: start, stop, fly?, run-path
@@ -209,7 +214,11 @@ class CameraController:
                         break  # The loop is exited to avoid any issues with drone control, ensuring that only one hand can control the drone at a time.
 
             if self.show_minimap:
-                self.__frame = self.minimap.display(frame=self.__frame, position=(self.__frame.shape[1]-50*2-20, 20), size=50)
+                self.__frame = self.minimap.display(
+                    frame=self.__frame,
+                    position=(self.__frame.shape[1] - 50 * 2 - 20, 20),
+                    size=50,
+                )
 
             if not self.showFrame():
                 cv2.destroyAllWindows()
@@ -295,7 +304,7 @@ class CameraController:
                     else:
                         self.__path.append(["move", distance])
 
-                    self.minimap.add_to_path(action=["move", distance])
+                    self.minimap.addToPath(action=["move", distance])
 
                 self.__command = ["move", index_tip_x]
 
@@ -325,7 +334,7 @@ class CameraController:
                     else:
                         self.__path.append(["rotate", rotate_degrees])
 
-                    self.minimap.add_to_path(action=["rotate", rotate_degrees])
+                    self.minimap.addToPath(action=["rotate", rotate_degrees])
 
                 self.__command = ["rotate", index_tip_x]
 

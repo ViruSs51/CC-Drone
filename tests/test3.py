@@ -15,7 +15,8 @@ import cv2
 
 while True:
     cv2.imshow("Test", frame)
-    if cv2.waitKey(0): break
+    if cv2.waitKey(0):
+        break
 
 drone.streamoff()
 drone.end()
