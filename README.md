@@ -175,6 +175,7 @@ camera_controller = CameraController(
     get_frame_function=get_frame_custom_function, # Custom function to retrieve frame
     drone_controller=None, # Instance of the src.controllers.drone_controller.Controller class
     show_information=True, # If you want to display information about the commands executed on the screen
+    show_minimap=True, # If you want to display on the screen the minimap with the movements of the drone that were coordinated for the drone.
     show_landmarks=True, # If you want to display hand markings on the screen
     capture=capture # Parameter for the custom frame fetch function
 )
@@ -200,6 +201,7 @@ camera_controller = CameraController(
     get_frame_function=ontroller.get_capture, # Custom function to retrieve frame
     drone_controller=controller, # Instance of the src.controllers.drone_controller.Controller class
     show_information=True, # If you want to display information about the commands executed on the screen
+    show_minimap=True, # If you want to display on the screen the minimap with the movements of the drone that were coordinated for the drone.
     show_landmarks=True, # If you want to display hand markings on the screen
 )
 ```
