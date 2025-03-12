@@ -79,8 +79,7 @@ class CameraController:
         self.__hands = Hands()
         self.config = file_manager.open_json(filename=config_path)
 
-        if self.show_minimap:
-            self.minimap = Minimap()
+        self.minimap = Minimap()
 
     def updateFrame(self, frame: np.ndarray):
         """Updates the global frame of the instance
@@ -133,6 +132,9 @@ class CameraController:
 
                     else:  # Rotate right
                         self.__drone_controller.rotate("right", abs(action[1]))
+
+        else:
+            self.commandToDrone(command='start')
 
         self.minimap.clearPath()
         self.__path = []
