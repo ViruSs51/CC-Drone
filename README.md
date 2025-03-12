@@ -50,16 +50,30 @@ Feel free to experiment with these gestures to control the drone more effectivel
 
 ```
 📦 CC-Drone
+ ┣ 📂 data
+ ┃ ┗ 📜 config.json
+ ┃ 
+ ┣ 📂 ai_core
+ ┃ ┣ 📂 vision
+ ┃ ┃ ┣ 📜 __init__.py
+ ┃ ┃ ┗ 📜 hand_tracking.py
+ ┃ ┃ 
+ ┃ ┗ 📜 __init__.py
+ ┃ 
  ┣ 📂 src
  ┃ ┗ 📂 controllers
  ┃   ┣ 📜 __init__.py
  ┃   ┣ 📜 camera_controller.py
+ ┃   ┣ 📜 component.py
  ┃   ┗ 📜 drone_dontroller.py
  ┃ 
  ┣ 📂 utils
  ┃ ┣ 📜 __init__.py
+ ┃ ┣ 📜 drawing.py
  ┃ ┗ 📜 file_manager.py
+ ┃ 
  ┣ 📂 tests
+ ┃ 
  ┣ 📜 requirements.txt
  ┣ 📜 README.md
  ┣ 📜 LICENSE
