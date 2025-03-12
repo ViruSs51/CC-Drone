@@ -29,6 +29,7 @@ def main():
             get_frame_function=controller.get_capture,
             drone_controller=controller,
             show_information=True,
+            show_minimap=True,
             show_landmarks=True,
         )
 
@@ -38,6 +39,7 @@ def main():
             get_frame_function=get_frame,
             drone_controller=controller,
             show_information=True,
+            show_minimap=True,
             show_landmarks=True,
             capture=capture,
         )
